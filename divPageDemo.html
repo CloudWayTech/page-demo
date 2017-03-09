@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<div class="col-sm-3">
+			<div id="neirong">
+				内容1
+			</div>
+			<div id="xxxPageCol" class="divCol" coToBo="a()" style="display: none;">
+				<!--divCol  coToBo参数：回掉函数，当页数变化后，调用的函数-->
+				<div class="input-group">
+					<span class="input-group-btn">
+			        <button class="btn btn-default pvBtn" type="button" onclick="">前一页</button>
+			      </span>
+					<input type="text" class="form-control pageNum" value="1">
+					<span class="input-group-addon allPageNum">共100页</span>
+					<span class="input-group-btn">
+			        <button class="btn btn-default jpBtn" type="button" onclick="">跳转</button>
+			        <button class="btn btn-default nxBtn" type="button" onclick="">后一页</button>
+			      </span>
+				</div>
+			</div>
+			<!--script标签放置在class名为divCol的div与bootcss及jq之后-->
+			<script src="js/divPage.js" type="text/javascript" charset="utf-8"></script>
+		</div>
+		<script type="text/javascript">
+			//首次需调用setDivPage，传入参数：启用分页div id的名字（本例子为xxxPageCol）和 分页总页数
+			setDivPage("xxxPageCol","11");
+			//下面是样例
+			function a(){
+				var gotdivPage=$("#xxxPageCol").find(".pageNum").val(); //获取即将跳转的页数,xxxPageCol为绑定的分页div id
+				//假设这里有个ajax，改变neirong里面的东西
+				$("#neirong").html("内容"+gotdivPage);
+			}
+		</script>
+	</body>
+
+</html>
